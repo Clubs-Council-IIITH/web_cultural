@@ -1,16 +1,15 @@
 import { NextResponse } from "next/server";
 
 import { getClient } from "gql/client";
-import { GET_CURRENT_MEMBERS } from "gql/queries/members";
+import { GET_ALL_CLUB_IDS } from "gql/queries/clubs";
 
-export async function POST(request) {
+export async function GET() {
   const response = { ok: false, data: null, error: null };
-  const { clubInput } = await request.json();
 
   const {
+    data: { allClubs },
     error,
-    data: { currentMembers },
-  } = await getClient().query(GET_CURRENT_MEMBERS, { clubInput });
+  } = await getClient().query(GET_ALL_CLUB_IDS, {});
   if (error) {
     response.error = {
       title: error.name,
@@ -18,7 +17,7 @@ export async function POST(request) {
     };
   } else {
     response.ok = true;
-    response.data = [...currentMembers];
+    response.data = allClubs;
   }
 
   return NextResponse.json(response);

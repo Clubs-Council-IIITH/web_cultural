@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 
 import { DataGrid } from "@mui/x-data-grid";
 
 import { useToast } from "components/Toast";
+
+const CLUB_ID = process.env.CLUB_ID || "nss";
 
 export default function UserMemberships({ rows = [] }) {
   const { triggerToast } = useToast();
@@ -65,7 +67,7 @@ export default function UserMemberships({ rows = [] }) {
   return (
     <DataGrid
       autoHeight
-      rows={rows}
+      rows={rows?.filter((row) => row.cid === CLUB_ID)}
       columns={columns}
       disableRowSelectionOnClick
       getRowId={(row) => row.rid}
