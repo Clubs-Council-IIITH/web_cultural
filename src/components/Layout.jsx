@@ -17,11 +17,11 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { bgBlur } from "utils/cssStyles";
 import Icon from "components/Icon";
 import AccountPopover from "components/profile/AccountPopover";
-import { useAuth } from "./AuthProvider";
-import DrawerItem from "./DrawerItem";
+import { useAuth } from "components/AuthProvider";
+import DrawerItem from "components/DrawerItem";
 import Logo from "components/Logo";
-import ScrollbarWrapper from "./ScrollbarWrapper";
-import Footer from "./Footer";
+import ScrollbarWrapper from "components/ScrollbarWrapper";
+import Footer from "components/Footer";
 
 
 // define top bar width
@@ -30,11 +30,9 @@ const BAR_HEIGHT_DESKTOP = 92;
 
 // define navigation drawer width
 const DRAWER_HEIGHT = 90;
-const DRAWER_WIDTH = 280;
-
 
 // bug report external link  :: To change
-export const BUG_REPORT_URL = "url_to_be_changed";
+export const BUG_REPORT_URL = "https://forms.office.com/r/zBLuvbBPXZ";
 
 function Bar({ onOpenDrawer }) {
     const theme = useTheme();

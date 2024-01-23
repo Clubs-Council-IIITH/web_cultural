@@ -2,7 +2,7 @@ import { getClient } from "gql/client";
 import { GET_MEMBERS } from "gql/queries/members";
 
 import { Divider, Grid, Typography } from "@mui/material";
-import MemberCard from "./MemberCard";
+import MemberCard from "components/members/MemberCard";
 
 export const dynamic = "force-dynamic";
 
