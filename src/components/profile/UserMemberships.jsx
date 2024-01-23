@@ -65,25 +65,29 @@ export default function UserMemberships({ rows = [] }) {
   ];
 
   return (
-    <DataGrid
-      autoHeight
-      rows={rows?.filter((row) => row.cid === CLUB_ID)}
-      columns={columns}
-      disableRowSelectionOnClick
-      getRowId={(row) => row.rid}
-      initialState={{
-        sorting: {
-          sortModel: [{ field: "endYear", sort: "asc" }],
-        },
-        pagination: { paginationModel: { pageSize: 5 } },
-      }}
-      pageSizeOptions={[5, 10, 25]}
-      sx={{
-        // disable cell selection style
-        ".MuiDataGrid-cell:focus": {
-          outline: "none",
-        },
-      }}
-    />
+    <>
+      {rows?.filter((row) => row.cid === CLUB_ID)?.length ?
+        <DataGrid
+          autoHeight
+          rows={rows?.filter((row) => row.cid === CLUB_ID)}
+          columns={columns}
+          disableRowSelectionOnClick
+          getRowId={(row) => row.rid}
+          initialState={{
+            sorting: {
+              sortModel: [{ field: "endYear", sort: "asc" }],
+            },
+            pagination: { paginationModel: { pageSize: 5 } },
+          }}
+          pageSizeOptions={[5, 10, 25]}
+          sx={{
+            // disable cell selection style
+            ".MuiDataGrid-cell:focus": {
+              outline: "none",
+            },
+          }}
+        /> : "No Memberships Found!"
+      }
+    </>
   );
 }
