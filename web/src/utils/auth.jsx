@@ -7,7 +7,7 @@ export function login(pathname) {
   setCookie("continue", pathname);
 
   // redirect to CAS login
-  window.location.replace("/login");
+  window.location.replace("https://clubs.iiit.ac.in/login");
 }
 
 export function logout(pathname) {
@@ -18,5 +18,5 @@ export function logout(pathname) {
   setCookie("logout", true);
 
   // redirect to CAS logout
-  window.location.replace("/logout");
+  window.location.replace("https://clubs.iiit.ac.in/logout");
 }

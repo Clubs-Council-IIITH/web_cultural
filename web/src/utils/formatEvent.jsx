@@ -15,14 +15,14 @@ export function audienceLabels(audience) {
   }));
 }
 
-export function stateLabel(state) {
-  return {
-    name: stateMap[state],
-    shortName: stateShortMap[state],
-    color: stateColorMap[state],
-    icon: stateIconMap[state],
-  };
-}
+// export function stateLabel(state) {
+//   return {
+//     name: stateMap[state],
+//     shortName: stateShortMap[state],
+//     color: stateColorMap[state],
+//     icon: stateIconMap[state],
+//   };
+// }
 
 export function locationLabel(location) {
   return { name: locationMap[location] };
