@@ -24,7 +24,7 @@ const DISCORD_URL = "https://discord.gg/V8C7QSRtat";
 const EMAIL_URL = process.env.FOOTER_EMAIL || "mailto:clubs@iiit.ac.in";
 
 const IIITLogo = "/assets/iiit-logo-white.png";
-const NssLogo = "/assets/nss_logo.png"
+const NssLogo = "/assets/body_logo.png"
 
 export default function Footer() {
   const theme = useTheme();
@@ -108,7 +108,7 @@ export default function Footer() {
 
       <Stack direction="row" spacing={1}>
         <Typography variant="body2" fontWeight={500}>
-            © {new Date().getFullYear()}, IIIT Hyderabad
+          © {new Date().getFullYear()}, IIIT Hyderabad
         </Typography>
 
         <Box sx={{ flexGrow: 1 }} />
