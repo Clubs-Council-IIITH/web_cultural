@@ -33,7 +33,7 @@ export default function Footer() {
   return (
     <Box>
       <Divider sx={{ py: 4 }} />
-      <Grid container py={5} spacing={2} display={"flex"} flexDirection={"column"}>
+      <Grid container pt={5} pb={3} spacing={2} display={"flex"} flexDirection={"column"}>
         <Grid
           item
           xs={12}
@@ -103,6 +103,28 @@ export default function Footer() {
           >
             <Icon external variant="akar-icons:instagram-fill" />
           </IconButton>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          lg
+          display="flex"
+          alignItems="center"
+          justifyContent={"center"}
+        >
+          <Typography
+            variant="body2"
+            sx={{
+              fontWeight: 500,
+              textDecoration: "none",
+              color: "black",
+              // "&:hover": {
+              //   textDecoration: "underline",
+              // },
+            }}
+          >
+            Developed & Maintained with ❤️ by SLC Tech Team
+          </Typography>
         </Grid>
       </Grid>
 
