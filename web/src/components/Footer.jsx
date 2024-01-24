@@ -20,7 +20,7 @@ const PRIVACY_POLICY_URL = "https://www.iiit.ac.in/privacy-policy/";
 const TWITTER_URL = "https://twitter.com/iiit_hyderabad";
 const FACEBOOK_URL = "https://www.facebook.com/IIITH";
 const INSTAGRAM_URL = "https://www.instagram.com/iiit.hyderabad/";
-const DISCORD_URL = "https://discord.gg/V8C7QSRtat";
+// const DISCORD_URL = "https://discord.gg/V8C7QSRtat";
 const EMAIL_URL = process.env.FOOTER_EMAIL || "mailto:clubs@iiit.ac.in";
 
 const IIITLogo = "/assets/iiit-logo-white.png";
@@ -75,13 +75,13 @@ export default function Footer() {
           >
             <Icon external variant="akar-icons:envelope" />
           </IconButton>
-          <IconButton
+          {/* <IconButton
             component="a"
             href={DISCORD_URL}
             sx={{ mx: 1, color: "text.primary" }}
           >
             <Icon external variant="akar-icons:discord-fill" />
-          </IconButton>
+          </IconButton> */}
           <IconButton
             component="a"
             href={TWITTER_URL}
