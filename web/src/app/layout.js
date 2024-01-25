@@ -23,11 +23,11 @@ export default async function RootLayout({ children }) {
     { userInput: null }
   );
 
+  const user = { ...userMeta, ...userProfile };
+
   const { data: { club } = {} } = await getClient().query(GET_CLUB, {
     clubInput: { cid: CLUB_ID },
   });
-
-  const user = { ...userMeta, ...userProfile };
 
  return (
     <html lang="en">

@@ -146,7 +146,21 @@ export default function Footer({ club = {} }) {
               // },
             }}
           >
-            Developed & Maintained with ❤️ by SLC Tech Team (powered by <a href="https://clubs.iiit.ac.in/">Clubs Council</a>)
+            Developed & Maintained with ❤️ by SLC Tech Team (powered by <Typography
+              variant="body2"
+              component={Link}
+              href={"https://clubs.iiit.ac.in/"}
+              sx={{
+                fontWeight: 500,
+                textDecoration: "none",
+                color: "black",
+                "&:hover": {
+                  textDecoration: "underline",
+                },
+              }}
+            >
+              Clubs Council
+            </Typography>)
           </Typography>
         </Grid>
       </Grid>
