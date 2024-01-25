@@ -5,11 +5,12 @@ import Progressbar from "components/Progressbar";
 import LocalizationWrapper from "components/LocalizationWrapper";
 import { AuthProvider } from "components/AuthProvider";
 import { GET_USER } from "gql/queries/auth";
+import { GET_CLUB } from "gql/queries/clubs";
 import Toast, { ToastProvider } from "components/Toast";
 import { Navigation, Content } from "components/Layout";
 import TransitionProvider from "components/TransitionProvider";
 
-
+const CLUB_ID = process.env.NEXT_PUBLIC_CLUB_ID || "nss";
 
 export const metadata = {
   title: 'National Service Scheme',
@@ -22,6 +23,10 @@ export default async function RootLayout({ children }) {
     { userInput: null }
   );
 
+  const { data: { club } = {} } = await getClient().query(GET_CLUB, {
+    clubInput: { cid: CLUB_ID },
+  });
+
   const user = { ...userMeta, ...userProfile };
 
  return (
@@ -33,7 +38,7 @@ export default async function RootLayout({ children }) {
               <AuthProvider user={user}>
                 <ToastProvider>
                   <Navigation />
-                   <Content>
+                   <Content club={club}>
                      <TransitionProvider>
                       {children}
                      </TransitionProvider>

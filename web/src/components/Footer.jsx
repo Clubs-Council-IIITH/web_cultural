@@ -17,16 +17,24 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Icon from "components/Icon";
 
 const PRIVACY_POLICY_URL = "https://www.iiit.ac.in/privacy-policy/";
-const TWITTER_URL = "https://twitter.com/iiit_hyderabad";
-const FACEBOOK_URL = "https://www.facebook.com/IIITH";
-const INSTAGRAM_URL = "https://www.instagram.com/iiit.hyderabad/";
-// const DISCORD_URL = "https://discord.gg/V8C7QSRtat";
-const EMAIL_URL = process.env.FOOTER_EMAIL || "mailto:clubs@iiit.ac.in";
+// const TWITTER_URL = "https://twitter.com/iiit_hyderabad";
+// const FACEBOOK_URL = "https://www.facebook.com/IIITH";
+// const INSTAGRAM_URL = "https://www.instagram.com/iiit.hyderabad/";
 
 const IIITLogo = "/assets/iiit-logo-white.png";
-const NssLogo = "/assets/body_logo.png"
+const BodyLogo = "/assets/body_logo.png"
 
-export default function Footer() {
+const sites = {
+  website: { icon: "mdi:web", color: "#7F7F7F" },
+  facebook: { icon: "ic:baseline-facebook", color: "#3C5999" },
+  instagram: { icon: "mdi:instagram", color: "#E94475" },
+  twitter: { icon: "mdi:twitter", color: "#05ACED" },
+  linkedin: { icon: "mdi:linkedin", color: "#027FB1" },
+  discord: { icon: "ic:baseline-discord", color: "#5865F3" },
+  youtube: { icon: "mdi:youtube", color: "#FF3333" },
+};
+
+export default function Footer({ club = {} }) {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
 
@@ -53,7 +61,7 @@ export default function Footer() {
           </Box>
           <Box>
             <Image
-              src={NssLogo}
+              src={BodyLogo}
               alt={"NSS"}
               height={50}
               width={50}
@@ -70,18 +78,33 @@ export default function Footer() {
         >
           <IconButton
             component="a"
-            href={EMAIL_URL}
+            target="_blank"
+            href={`mailto:${club.email}`}
             sx={{ mx: 1, color: "text.primary" }}
           >
             <Icon external variant="akar-icons:envelope" />
           </IconButton>
+          {Object.keys(sites)
+            ?.filter((k) => club.socials[k])
+            ?.map((item, index) => (
+              <IconButton
+                component="a"
+                href={club.socials[item]}
+                target="_blank"
+                sx={{ mx: 1, color: "text.primary" }}
+                key={index}
+              >
+                <Icon external variant={sites[item].icon} />
+              </IconButton>
+            ))
+          }
           {/* <IconButton
             component="a"
             href={DISCORD_URL}
             sx={{ mx: 1, color: "text.primary" }}
           >
             <Icon external variant="akar-icons:discord-fill" />
-          </IconButton> */}
+          </IconButton> 
           <IconButton
             component="a"
             href={TWITTER_URL}
@@ -102,7 +125,7 @@ export default function Footer() {
             sx={{ mx: 1, color: "text.primary" }}
           >
             <Icon external variant="akar-icons:instagram-fill" />
-          </IconButton>
+          </IconButton> */}
         </Grid>
         <Grid
           item
@@ -123,7 +146,7 @@ export default function Footer() {
               // },
             }}
           >
-            Developed & Maintained with ❤️ by SLC Tech Team
+            Developed & Maintained with ❤️ by SLC Tech Team (powered by <a href="https://clubs.iiit.ac.in/">Clubs Council</a>)
           </Typography>
         </Grid>
       </Grid>
