@@ -31,7 +31,6 @@ export default async function Members() {
         <ClubInfo
           name={club.name}
           logo={club.logo}
-          tagline={club.tagline}
         />
       </Box>
       <Box>

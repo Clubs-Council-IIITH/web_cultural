@@ -6,7 +6,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 import ClubLogo from "components/clubs/ClubLogo";
 
-export default function ClubInfo({ name, logo, tagline, description }) {
+export default function ClubInfo({ name, logo, tagline = null, description = null }) {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
 
@@ -22,13 +22,13 @@ export default function ClubInfo({ name, logo, tagline, description }) {
         />
         <Box>
           <Typography variant={isDesktop ? "h3" : "h4"}>{name}</Typography>
-          <Typography
+          {tagline ? <Typography
             variant={isDesktop ? "subtitle1" : "subtitle2"}
             color="text.disabled"
             fontWeight={400}
           >
             {tagline}
-          </Typography>
+          </Typography> : null}
         </Box>
       </Box>
       <Box pt={2}>

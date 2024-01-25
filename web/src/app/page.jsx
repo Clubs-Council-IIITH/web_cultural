@@ -1,26 +1,42 @@
-import Link from "next/link";
-import { Box, Typography } from "@mui/material";
+import { getClient } from "gql/client";
+import { GET_CLUB } from "gql/queries/clubs";
+
+import { Box, Typography, Card } from "@mui/material";
+
+import ClubBanner from "components/clubs/ClubBanner";
+import ClubInfo from "components/clubs/ClubInfo";
+import ClubSocials from "components/clubs/ClubSocials";
+
+const CLUB_ID = process.env.NEXT_PUBLIC_CLUB_ID || "nss";
 
 export const metadata = {
   title: "Home",
 };
 
-export default function Home() {
+export default async function Home() {
+  const { data: { club } = {} } = await getClient().query(GET_CLUB, {
+    clubInput: { cid: CLUB_ID },
+  });
+
   return (
-    <Typography variant="body">
-      The National Service Scheme (NSS) at the International Institute of
-      Information Technology (IIIT) Hyderabad, India, is a voluntary
-      organization that aims to inculcate a sense of social responsibility and
-      community service among the students. The NSS unit at IIIT Hyderabad
-      actively engages in various social welfare activities, community
-      development programs, and outreach initiatives.
-      <Box my={2} />
-      The primary objective of NSS at IIIT Hyderabad is to develop the
-      personality and character of students through community service. It seeks
-      to instill values of selfless service, empathy, and social responsibility.
-      NSS is a voluntary program, and students can choose to become NSS
-      volunteers. These volunteers participate in a range of activities that
-      contribute to the betterment of society.
-    </Typography>
+    <Box>
+      <Card variant="none" sx={{ boxShadow: 0 }}>
+        <ClubBanner
+          name={club.name}
+          banner={club.banner}
+          width={640}
+          height={480}
+        />
+      </Card>
+      <Box my={4}>
+        <ClubInfo
+          name={club.name}
+          logo={club.logo}
+          tagline={club.tagline}
+          description={club.description}
+        />
+      </Box>
+      <ClubSocials socials={club.socials} />
+    </Box>
   );
 }
