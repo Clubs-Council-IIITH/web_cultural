@@ -3,7 +3,7 @@ import EventsFilter from "components/events/EventsFilter";
 
 import EventsGrid from "components/events/EventsGrid";
 
-const CLUB_ID = process.env.CLUB_ID || "nss";
+const CLUB_ID = process.env.NEXT_PUBLIC_CLUB_ID || "nss";
 
 export const metadata = {
   title: "Events",

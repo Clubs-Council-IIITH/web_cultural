@@ -1,5 +1,5 @@
-const FILESERVER_URL = process.env.FILESERVER_URL || "http://files";
-const STATIC_URL = process.env.STATIC_URL || "http://nginx/static";
+const FILESERVER_URL = process.env.NEXT_PUBLIC_FILESERVER_URL || "http://files";
+const STATIC_URL = process.env.NEXT_PUBLIC_STATIC_URL || "http://nginx/static";
 
 export function getStaticFile(filepath) {
   return `${STATIC_URL}/${filepath}`;

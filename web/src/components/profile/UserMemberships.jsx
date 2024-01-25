@@ -6,7 +6,7 @@ import { DataGrid } from "@mui/x-data-grid";
 
 import { useToast } from "components/Toast";
 
-const CLUB_ID = process.env.CLUB_ID || "nss";
+const CLUB_ID = process.env.NEXT_PUBLIC_CLUB_ID || "nss";
 
 export default function UserMemberships({ rows = [] }) {
   const { triggerToast } = useToast();
@@ -33,6 +33,8 @@ export default function UserMemberships({ rows = [] }) {
       }
     })();
   }, []);
+
+  console.log(CLUB_ID)
 
   const columns = [
     {

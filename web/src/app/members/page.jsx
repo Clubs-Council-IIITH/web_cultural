@@ -6,10 +6,10 @@ import { Box, Card } from "@mui/material";
 import MembersGrid from "components/members/MembersGrid";
 import ClubInfo from "components/clubs/ClubInfo";
 
-const CLUB_ID = process.env.CLUB_ID || "nss";
+const CLUB_ID = process.env.NEXT_PUBLIC_CLUB_ID || "nss";
 
 export async function generateMetadata(parent) {
-  const id  = CLUB_ID;
+  const id = CLUB_ID;
 
   const { data: { club } = {} } = await getClient().query(GET_CLUB, {
     clubInput: { cid: id },
@@ -27,16 +27,16 @@ export default async function Members() {
   });
   return (
     <Box>
-    <Box my={4}>
-      <ClubInfo
-        name={club.name}
-        logo={club.logo}
-        tagline={club.tagline}
-      />
-    </Box>
-    <Box>
-      <MembersGrid clubid={id} />
-    </Box>
+      <Box my={4}>
+        <ClubInfo
+          name={club.name}
+          logo={club.logo}
+          tagline={club.tagline}
+        />
+      </Box>
+      <Box>
+        <MembersGrid clubid={id} />
+      </Box>
     </Box>
   );
 }
