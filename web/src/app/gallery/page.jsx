@@ -1,28 +1,32 @@
 import ImageMasonry from "components/ImageMasonry";
 import ImageModal from "components/ImageModal";
-import { getStaticFile } from "utils/files";
 
-const CLUB_ID = process.env.NEXT_PUBLIC_CLUB_ID || "nss";
+import fs from 'fs';
+import path from 'path';
 
 export const metadata = {
   title: "Gallery",
 };
 
 export default async function Gallery({ searchParams, limit = undefined }) {
-  const response = await fetch(getStaticFile('gallery/list/'));
-  const galleryJSON = await response.json();
-  const galleryItems = galleryJSON
-    ?.filter(item => item.startsWith(`${CLUB_ID}_`))
-    ?.map(item => `${getStaticFile('gallery/')}${item}`);
+  const dir = path.resolve(__dirname, '../../../../public/assets/gallery');
+  const files = fs.readdirSync(dir).map(file => `/assets/gallery/${file}`);
 
   return (
     <>
-      <ImageMasonry
-        images={galleryItems}
-        linkPrefix="/gallery?img="
-        limit={limit}
-      />
-      <ImageModal images={galleryItems} id={searchParams?.img} />
+      {files && files.length ? (
+        <>
+          <ImageMasonry
+            images={files}
+            linkPrefix="/gallery?img="
+            limit={limit}
+          />
+          <ImageModal images={files} id={searchParams?.img} />
+        </>
+      ) : <center>
+        <h2>Gallery not found!</h2>
+      </center>
+      }
     </>
   );
 }
