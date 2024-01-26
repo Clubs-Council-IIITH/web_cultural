@@ -34,8 +34,6 @@ export default function UserMemberships({ rows = [] }) {
     })();
   }, []);
 
-  console.log(CLUB_ID)
-
   const columns = [
     {
       field: "name",
@@ -81,6 +79,7 @@ export default function UserMemberships({ rows = [] }) {
             },
             pagination: { paginationModel: { pageSize: 5 } },
           }}
+          disableColumnMenu={true}
           pageSizeOptions={[5, 10, 25]}
           sx={{
             // disable cell selection style

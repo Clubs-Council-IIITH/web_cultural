@@ -109,12 +109,20 @@ export default function EventsFilter({ name, club, state }) {
               }}
             />
             </Grid>
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{ mr: 1}}
+            >
+              Search
+            </Button>
+
             <Grid item xs lg>
               <ToggleButtonGroup
                 fullWidth
                 value={state}
                 color="primary"
-                sx={{ height: "100%"}}
+                sx={{ height: "100%", mx: isDesktop ? 5 : 0}}
                 onChange={(e) => {
                   // don't do anything if all states are being unselected
                   if (state.length === 1 && state.includes(e.target.value)) return;
@@ -135,9 +143,6 @@ export default function EventsFilter({ name, club, state }) {
                 </ToggleButton>
               </ToggleButtonGroup>
             </Grid>
-            <Button type="submit" variant="contained" >
-              Search
-            </Button>
           </Stack>
         </Grid>
       </Grid>
