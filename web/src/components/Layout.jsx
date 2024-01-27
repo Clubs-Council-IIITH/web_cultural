@@ -26,10 +26,10 @@ import Footer from "components/Footer";
 
 // define top bar width
 const BAR_HEIGHT_MOBILE = 64;
-const BAR_HEIGHT_DESKTOP = 92;
+const BAR_HEIGHT_DESKTOP = 80;
 
 // define navigation drawer width
-const DRAWER_HEIGHT = 90;
+const DRAWER_HEIGHT = 80;
 
 // bug report external link  :: To change
 export const BUG_REPORT_URL = "https://forms.office.com/r/zBLuvbBPXZ";

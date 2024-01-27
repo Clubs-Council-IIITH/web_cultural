@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const CCLogoColor = "/assets/cc-logo-full-color.svg";
 const IIITHLogo = "/assets/iiith_logo.png"
-const NssLogo = "/assets/body_logo.png"
+const BodyLogo = "/assets/body_logo.png"
 
 export default function Logo() {
   return (
@@ -17,11 +17,11 @@ export default function Logo() {
         /> */}
       <Image
         priority
-        src={NssLogo}
+        src={BodyLogo}
         alt="Clubs Council"
-        width={60}
-        height={60}
-        style={{ marginLeft: 10 }}
+        width={100}
+        height={30}
+        style={{ marginLeft: 10, marginTop: 15}}
       />
     </Link>
   );
