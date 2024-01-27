@@ -33,7 +33,7 @@ export default function ClubBanner({
     <Box
       sx={{
         position: "relative",
-        pt: containerHeight ? containerHeight : isDesktop ? "20%" : "40%",
+        pt: containerHeight ? containerHeight : isDesktop ? "25%" : "40%",
         "&:after": {
           top: 0,
           content: "''",

@@ -19,7 +19,7 @@ export default async function Home() {
   });
 
   return (
-    <Box>
+    <Box mt={1}>
       <Card variant="none" sx={{ boxShadow: 0 }}>
         <ClubBanner
           name={club.name}

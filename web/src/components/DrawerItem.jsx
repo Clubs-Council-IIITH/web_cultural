@@ -34,13 +34,12 @@ export default function DrawerItem({ title, path, icon }) {
       sx={{
         ...theme.typography.body2,
         position: "relative",
-        height: 44,
-        width: isDesktop ? "max-content" : "90vw",
+        height: isDesktop ? 44 : 54,
         textTransform: "capitalize",
         paddingLeft: theme.spacing(0),
-        paddingRight: theme.spacing(2.5),
+        paddingRight: theme.spacing(1.5),
         marginBottom: theme.spacing(0.5),
-        color: isDesktop? theme.palette.text.opposite : theme.palette.text.primary,
+        color: theme.palette.text.opposite,
         borderRadius: 1,
         // active
         ...(active && {
@@ -48,7 +47,7 @@ export default function DrawerItem({ title, path, icon }) {
           color: theme.palette.accent,
           backgroundColor: alpha(
             theme.palette.accent,
-            theme.palette.action.selectedOpacity
+            0.16
           ),
         }),
       }}

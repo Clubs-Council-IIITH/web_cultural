@@ -72,7 +72,7 @@ export default function AccountPopover() {
               height: "100%",
               borderRadius: "5%",
               position: "absolute",
-              bgcolor: (theme) => alpha(theme.palette.grey[700], 0.6),
+              bgcolor: (theme) => alpha(theme.palette.grey[800], 0.3),
             },
           }),
         }}

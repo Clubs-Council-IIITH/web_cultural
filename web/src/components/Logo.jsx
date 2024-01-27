@@ -5,7 +5,7 @@ const CCLogoColor = "/assets/cc-logo-full-color.svg";
 const IIITHLogo = "/assets/iiith_logo.png"
 const BodyLogo = "/assets/body_logo.png"
 
-export default function Logo() {
+export default function Logo({ isDesktop = true }) {
   return (
     <Link href="/">
       {/* <Image
@@ -21,7 +21,11 @@ export default function Logo() {
         alt="Clubs Council"
         width={100}
         height={30}
-        style={{ marginLeft: 10, marginTop: 15}}
+        style={{
+          marginLeft: isDesktop ? 15 : 25,
+          marginTop: isDesktop ? 15 : 20,
+          marginBottom: isDesktop ? 0 : 20,
+        }}
       />
     </Link>
   );

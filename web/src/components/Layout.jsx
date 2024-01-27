@@ -17,7 +17,6 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { bgBlur } from "utils/cssStyles";
 import Icon from "components/Icon";
 import AccountPopover from "components/profile/AccountPopover";
-import { useAuth } from "components/AuthProvider";
 import DrawerItem from "components/DrawerItem";
 import Logo from "components/Logo";
 import ScrollbarWrapper from "components/ScrollbarWrapper";
@@ -26,30 +25,33 @@ import Footer from "components/Footer";
 
 // define top bar width
 const BAR_HEIGHT_MOBILE = 64;
-const BAR_HEIGHT_DESKTOP = 80;
+const BAR_HEIGHT_DESKTOP = 70;
 
 // define navigation drawer width
-const DRAWER_HEIGHT = 80;
+const DRAWER_HEIGHT = 70;
+const DRAWER_WIDTH = 240;
 
 // bug report external link  :: To change
 export const BUG_REPORT_URL = "https://forms.office.com/r/zBLuvbBPXZ";
 
 function Bar({ onOpenDrawer }) {
   const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
+
   return (
     <AppBar
       sx={{
         ...({ backgroundColor: theme.palette.background.opposite, color: theme.palette.text.opposite }),
         boxShadow: "none",
-        [theme.breakpoints.up("md")]: {
+        [isDesktop]: {
           width: "100%",
         },
       }}
     >
       <Toolbar
         sx={{
-          minHeight: BAR_HEIGHT_MOBILE,
-          [theme.breakpoints.up("md")]: {
+          height: BAR_HEIGHT_MOBILE,
+          [isDesktop]: {
             minHeight: BAR_HEIGHT_DESKTOP,
             padding: theme.spacing(0, 5),
           },
@@ -85,7 +87,6 @@ function Bar({ onOpenDrawer }) {
 function Drawer({ drawerOpen, onCloseDrawer }) {
   const theme = useTheme();
   const pathname = usePathname();
-  const { user } = useAuth();
 
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
 
@@ -140,10 +141,15 @@ function Drawer({ drawerOpen, onCloseDrawer }) {
           </Stack>
         </Box>
       ) : (
-        <Box sx={{ px: 2.5, py: 2, height: "max-content" }}>
+        <Box sx={{
+          px: 2.5,
+          py: 2,
+          // height: "max-content",
+            backgroundColor: theme.palette.background.opposite,
+        }}>
           <Box display="flex" justifyContent="space-between">
-            <Logo />
-            <Stack
+            <Logo isDesktop={false} />
+            {/* <Stack
               direction="row"
               alignItems="center"
               spacing={{
@@ -152,11 +158,12 @@ function Drawer({ drawerOpen, onCloseDrawer }) {
               }}
             >
               <AccountPopover />
-            </Stack>
+            </Stack> */}
           </Box>
-          <Box display="flex" flexDirection="column" justifyItems="center">
+          <Box>
             {publicItems}
           </Box>
+          <Box sx={{ flexGrow: 1 }} />
         </Box>
       )}
     </div>
@@ -195,10 +202,10 @@ function Drawer({ drawerOpen, onCloseDrawer }) {
             }}
             PaperProps={{
               sx: {
-                width: "100vw",
-                height: "max-content",
+                width: DRAWER_WIDTH,
                 display: "flex",
                 flexDirection: "column",
+                bgcolor: "background.opposite",
               },
             }}
           >
@@ -241,7 +248,8 @@ export function Content({ children, ...props }) {
           sx={{
             overflow: "auto",
             width: "100%",
-            paddingTop: `${BAR_HEIGHT_MOBILE}px`,
+            marginTop: `${isDesktop ? BAR_HEIGHT_DESKTOP + 20 : BAR_HEIGHT_MOBILE + 15}px`,
+            paddingTop: `${isDesktop ? theme.spacing(5) : 0}`,
             paddingBottom: theme.spacing(5),
             [theme.breakpoints.up("md")]: {
               marginTop: `${DRAWER_HEIGHT}px`,
