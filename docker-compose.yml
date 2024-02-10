@@ -11,6 +11,6 @@ services:
       - ./web:/web
       # - ./static_files:/web/static_files
     env_file:
-      - ./web/.env
+      - $CULTURAL_CONFIG_PATH/web
     ports:
       - 81:80
