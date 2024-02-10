@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  web_cultural:
+  web_nss:
     build:
       context: ./web
       dockerfile: dev.Dockerfile
@@ -11,6 +11,6 @@ services:
       - ./web:/web
       # - ./static_files:/web/static_files
     env_file:
-      - $CULTURAL_CONFIG_PATH/web
+      - ./web/.env
     ports:
       - 81:80
