@@ -18,9 +18,6 @@ import { BUG_REPORT_URL } from "components/Layout";
 import Icon from "components/Icon";
 
 
-// import Icon from "components/Icon";
-// import { BUG_REPORT_URL } from "components/Layout";
-
 export default function GlobalError({ error, reset }) {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
@@ -35,9 +32,9 @@ export default function GlobalError({ error, reset }) {
         py: 8,
       }} >
 
-        <Stack direction="column" spacing={4} alignItems="center">
-          <Stack direction="row" spacing={3} alignItems="center">
-{/*           <Icon
+      <Stack direction="column" spacing={4} alignItems="center">
+        <Stack direction="row" spacing={3} alignItems="center">
+          {/*           <Icon
 //             external
 //             variant="fluent-emoji-flat:crying-face"
 //             sx={{ width: 150, height: 150 }}
@@ -45,45 +42,45 @@ export default function GlobalError({ error, reset }) {
           <Typography variant={isDesktop ? "h2" : "h3"}>
             Oh no! Something went wrong.
           </Typography>
-         </Stack>
+        </Stack>
 
-          <Stack direction="column" spacing={2} alignItems="center">
-            <Typography variant="body1">
-                If you weren't expecting to see this,{" "}
-//             <Link href={BUG_REPORT_URL}>report it to our dev team</Link> along
-              with the error details below so we can get it fixed ASAP!
-              </Typography>
+        <Stack direction="column" spacing={2} alignItems="center">
+          <Typography variant="body1">
+            If you weren't expecting to see this,{" "}
+            <Link href={BUG_REPORT_URL}>report it to our dev team</Link> along
+            with the error details below so we can get it fixed ASAP!
+          </Typography>
 
-            <Stack direction="row" spacing={1}>
-              <Button
-                variant="outlined"
-                color="secondary"
-                component={Link}
-                href="/"
-                startIcon={<Icon variant="home-outline" />}
-              >
-                Go Home
-              </Button>
-              <Button
-                onClick={reset}
-                variant="outlined"
-                color="secondary"
-                startIcon={<Icon variant="refresh-rounded" />}
-              >
-                Retry
-              </Button>
-            </Stack>
-            </Stack>
+          <Stack direction="row" spacing={1}>
+            <Button
+              variant="outlined"
+              color="secondary"
+              component={Link}
+              href="/"
+              startIcon={<Icon variant="home-outline" />}
+            >
+              Go Home
+            </Button>
+            <Button
+              onClick={reset}
+              variant="outlined"
+              color="secondary"
+              startIcon={<Icon variant="refresh-rounded" />}
+            >
+              Retry
+            </Button>
+          </Stack>
+        </Stack>
 
-            <Alert severity="error" sx={{ mt: 8, maxWidth: "80vw" }}>
-              <AlertTitle>
-                {error?.name} {error?.digest}
-              </AlertTitle>
-              <Typography variant="body1" gutterBottom mb={2}>
-                {error?.message}
-              </Typography>
-              <Typography variant="overline">Stacktrace</Typography>
-              {error?.stack.split("\n").map((line, i) => (
+        <Alert severity="error" sx={{ mt: 8, maxWidth: "80vw" }}>
+          <AlertTitle>
+            {error?.name} {error?.digest}
+          </AlertTitle>
+          <Typography variant="body1" gutterBottom mb={2}>
+            {error?.message}
+          </Typography>
+          <Typography variant="overline">Stacktrace</Typography>
+          {error?.stack.split("\n").map((line, i) => (
             <Typography
               variant="body2"
               fontFamily="monospace"

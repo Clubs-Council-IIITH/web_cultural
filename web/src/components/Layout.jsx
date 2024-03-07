@@ -32,7 +32,7 @@ const DRAWER_HEIGHT = 70;
 const DRAWER_WIDTH = 240;
 
 // bug report external link  :: To change
-export const BUG_REPORT_URL = "https://forms.office.com/r/zBLuvbBPXZ";
+export const BUG_REPORT_URL = "https://help.iiit.ac.in/projects/web-administration/issues/new";
 
 function Bar({ onOpenDrawer }) {
   const theme = useTheme();
@@ -145,7 +145,7 @@ function Drawer({ drawerOpen, onCloseDrawer }) {
           px: 2.5,
           py: 2,
           // height: "max-content",
-            backgroundColor: theme.palette.background.opposite,
+          backgroundColor: theme.palette.background.opposite,
         }}>
           <Box display="flex" justifyContent="space-between">
             <Logo isDesktop={false} />
