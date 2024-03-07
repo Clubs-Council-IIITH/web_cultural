@@ -13,4 +13,4 @@ services:
     env_file:
       - ./web/.env
     ports:
-      - 81:80
+      - 82:80
