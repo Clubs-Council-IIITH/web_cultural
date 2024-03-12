@@ -66,7 +66,7 @@ export default function UserMemberships({ rows = [] }) {
 
   return (
     <>
-      {rows?.filter((row) => row.cid === CLUB_ID)?.length ?
+      {rows?.filter((row) => row.cid === CLUB_ID)?.length ? (
         <DataGrid
           autoHeight
           rows={rows?.filter((row) => row.cid === CLUB_ID)}
@@ -87,8 +87,10 @@ export default function UserMemberships({ rows = [] }) {
               outline: "none",
             },
           }}
-        /> : "No Memberships Found!"
-      }
+        />
+      ) : (
+        "No Memberships Found!"
+      )}
     </>
   );
 }

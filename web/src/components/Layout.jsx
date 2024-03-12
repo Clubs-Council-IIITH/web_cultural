@@ -22,7 +22,6 @@ import Logo from "components/Logo";
 import ScrollbarWrapper from "components/ScrollbarWrapper";
 import Footer from "components/Footer";
 
-
 // define top bar width
 const BAR_HEIGHT_MOBILE = 64;
 const BAR_HEIGHT_DESKTOP = 70;
@@ -32,7 +31,8 @@ const DRAWER_HEIGHT = 70;
 const DRAWER_WIDTH = 240;
 
 // bug report external link  :: To change
-export const BUG_REPORT_URL = "https://help.iiit.ac.in/projects/web-administration/issues/new";
+export const BUG_REPORT_URL =
+  "https://help.iiit.ac.in/projects/web-administration/issues/new";
 
 function Bar({ onOpenDrawer }) {
   const theme = useTheme();
@@ -41,7 +41,10 @@ function Bar({ onOpenDrawer }) {
   return (
     <AppBar
       sx={{
-        ...({ backgroundColor: theme.palette.background.opposite, color: theme.palette.text.opposite }),
+        ...{
+          backgroundColor: theme.palette.background.opposite,
+          color: theme.palette.text.opposite,
+        },
         boxShadow: "none",
         [isDesktop]: {
           width: "100%",
@@ -83,7 +86,6 @@ function Bar({ onOpenDrawer }) {
   );
 }
 
-
 function Drawer({ drawerOpen, onCloseDrawer }) {
   const theme = useTheme();
   const pathname = usePathname();
@@ -95,10 +97,19 @@ function Drawer({ drawerOpen, onCloseDrawer }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
-
   // nav items that everybody can see
   const publicItems = (
-    <List disablePadding sx={{ p: 1, pt: 1, display: "inherit", flexDirection: "inherit", alignItems: "center", gap: "20px" }} >
+    <List
+      disablePadding
+      sx={{
+        p: 1,
+        pt: 1,
+        display: "inherit",
+        flexDirection: "inherit",
+        alignItems: "center",
+        gap: "20px",
+      }}
+    >
       <DrawerItem
         title="home"
         path="/"
@@ -122,11 +133,17 @@ function Drawer({ drawerOpen, onCloseDrawer }) {
     </List>
   );
 
-
   const drawerContent = (
     <div>
       {isDesktop ? (
-        <Box sx={{ px: 2.5, py: 2, display: "flex", justifyContent: "space-between" }}>
+        <Box
+          sx={{
+            px: 2.5,
+            py: 2,
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
           <Logo />
           {publicItems}
           <Stack
@@ -141,12 +158,14 @@ function Drawer({ drawerOpen, onCloseDrawer }) {
           </Stack>
         </Box>
       ) : (
-        <Box sx={{
-          px: 2.5,
-          py: 2,
-          // height: "max-content",
-          backgroundColor: theme.palette.background.opposite,
-        }}>
+        <Box
+          sx={{
+            px: 2.5,
+            py: 2,
+            // height: "max-content",
+            backgroundColor: theme.palette.background.opposite,
+          }}
+        >
           <Box display="flex" justifyContent="space-between">
             <Logo isDesktop={false} />
             {/* <Stack
@@ -160,14 +179,11 @@ function Drawer({ drawerOpen, onCloseDrawer }) {
               <AccountPopover />
             </Stack> */}
           </Box>
-          <Box>
-            {publicItems}
-          </Box>
+          <Box>{publicItems}</Box>
           <Box sx={{ flexGrow: 1 }} />
         </Box>
       )}
     </div>
-
   );
   return (
     <Box
@@ -192,31 +208,28 @@ function Drawer({ drawerOpen, onCloseDrawer }) {
         >
           {drawerContent}
         </MUIDrawer>
-      )
-        : (
-          <MUIDrawer
-            open={drawerOpen}
-            onClose={onCloseDrawer}
-            ModalProps={{
-              keepMounted: true,
-            }}
-            PaperProps={{
-              sx: {
-                width: DRAWER_WIDTH,
-                display: "flex",
-                flexDirection: "column",
-                bgcolor: "background.opposite",
-              },
-            }}
-          >
-            {drawerContent}
-          </MUIDrawer>
-        )}
+      ) : (
+        <MUIDrawer
+          open={drawerOpen}
+          onClose={onCloseDrawer}
+          ModalProps={{
+            keepMounted: true,
+          }}
+          PaperProps={{
+            sx: {
+              width: DRAWER_WIDTH,
+              display: "flex",
+              flexDirection: "column",
+              bgcolor: "background.opposite",
+            },
+          }}
+        >
+          {drawerContent}
+        </MUIDrawer>
+      )}
     </Box>
   );
-
 }
-
 
 export function Navigation() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -266,4 +279,3 @@ export function Content({ children, ...props }) {
     </ScrollbarWrapper>
   );
 }
-

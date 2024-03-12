@@ -26,7 +26,6 @@ export default function DrawerItem({ title, path, icon }) {
   const externalLink = isExternalLink(path);
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
 
-
   return (
     <ListItemButton
       component={Link}
@@ -45,10 +44,7 @@ export default function DrawerItem({ title, path, icon }) {
         ...(active && {
           ...theme.typography.subtitle2,
           color: theme.palette.accent,
-          backgroundColor: alpha(
-            theme.palette.accent,
-            0.16
-          ),
+          backgroundColor: alpha(theme.palette.accent, 0.16),
         }),
       }}
       {...(externalLink
@@ -78,7 +74,7 @@ export default function DrawerItem({ title, path, icon }) {
             display="flex"
             alignItems="center"
             justifyContent="space-between"
-              >
+          >
             {title}
             {externalLink && <Icon variant="link" />}
           </Box>

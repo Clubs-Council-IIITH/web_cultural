@@ -56,7 +56,7 @@ export default function UserImage({
       style={{
         width: width,
         height: height,
-        borderRadius: "6px",  
+        borderRadius: "6px",
       }}
       {...genConfig({
         sex: gender?.toLowerCase() === "male" ? "man" : "woman",

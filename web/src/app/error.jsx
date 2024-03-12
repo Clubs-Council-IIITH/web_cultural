@@ -17,7 +17,6 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { BUG_REPORT_URL } from "components/Layout";
 import Icon from "components/Icon";
 
-
 export default function GlobalError({ error, reset }) {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
@@ -30,8 +29,8 @@ export default function GlobalError({ error, reset }) {
         alignItems: "center",
         justifyContent: "center",
         py: 8,
-      }} >
-
+      }}
+    >
       <Stack direction="column" spacing={4} alignItems="center">
         <Stack direction="row" spacing={3} alignItems="center">
           {/*           <Icon
