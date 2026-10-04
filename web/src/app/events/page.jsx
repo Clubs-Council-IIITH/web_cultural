@@ -20,7 +20,7 @@ export default async function Events({ searchParams }) {
 
   return (
     <Box>
-      <Box mt={2}>
+      <Box sx={{ mt: 2 }}>
         <EventsFilter name={targetName} state={targetState} />
       </Box>
 

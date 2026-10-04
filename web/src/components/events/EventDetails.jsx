@@ -42,7 +42,7 @@ export default function EventDetails({ event, showCode = false }) {
             <Typography variant="body2">
               <DateTime dt={event.datetimeperiod[0]} />
             </Typography>
-            <Box mx={1}>-</Box>
+            <Box sx={{ mx: 1 }}>-</Box>
             <Typography variant="body2">
               <DateTime dt={event.datetimeperiod[1]} />
             </Typography>
@@ -62,7 +62,7 @@ export default function EventDetails({ event, showCode = false }) {
             </Typography>
           ) : null}
 
-          <Box my={1} />
+          <Box sx={{ my: 1 }} />
 
           <ClubButton clubid={event.clubid} />
 

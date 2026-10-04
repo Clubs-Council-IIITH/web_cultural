@@ -27,7 +27,7 @@ export default async function Members() {
   });
   return (
     <Box>
-      <Box my={4}>
+      <Box sx={{ my: 4 }}>
         <ClubInfo name={club.name} logo={club.logo} />
       </Box>
       <Box>

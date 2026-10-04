@@ -35,6 +35,7 @@ export default function ImageModal({ images, id = null }) {
         }}
       >
         <Image
+          alt={id !== null ? `Gallery image ${id}` : "Gallery image"}
           src={images[id]}
           width={0}
           height={0}

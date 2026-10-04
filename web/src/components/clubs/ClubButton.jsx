@@ -18,8 +18,7 @@ export default async function ClubButton({ clubid }) {
         <Button
           variant="outlined"
           color="secondary"
-          display="flex"
-          alignItems="center"
+          sx={{ display: "flex", alignItems: "center" }}
         >
           <ClubLogo
             name={club.name}

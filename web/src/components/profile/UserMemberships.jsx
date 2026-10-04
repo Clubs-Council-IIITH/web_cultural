@@ -112,7 +112,7 @@ export default function UserMemberships({ rows = [] }) {
       {rows?.filter((row) => row.cid === CLUB_ID)?.length ? (
         <DataGrid
           autoHeight
-          getRowHeight={() => (isMobile ? "auto" : "none")}
+          getRowHeight={() => (isMobile ? "auto" : null)}
           rows={rows?.filter((row) => row.cid === CLUB_ID)}
           columns={columns}
           disableRowSelectionOnClick

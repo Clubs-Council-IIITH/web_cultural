@@ -11,17 +11,18 @@ export default function ActionPalette({
       <Grid
         container
         direction={{ xs: "column-reverse", md: "row" }}
-        alignItems="center"
-        justifyContent="space-between"
         spacing={2}
+        sx={{ alignItems: "center", justifyContent: "space-between" }}
       >
         <Grid
           container
           size={{ xs: 12, md: 6 }}
           spacing={1}
-          justifyContent={{ xs: "center", md: "flex-start" }}
-          alignItems="center"
-          my={0.5}
+          sx={{
+            justifyContent: { xs: "center", md: "flex-start" },
+            alignItems: "center",
+            my: 0.5,
+          }}
         >
           {left.map((Component, key) => (
             <Grid size="auto" key={key}>
@@ -34,9 +35,11 @@ export default function ActionPalette({
           container
           size={{ xs: 12, md: 6 }}
           spacing={1}
-          justifyContent={{ xs: "center", md: "flex-end" }}
-          alignItems="center"
-          my={0.5}
+          sx={{
+            justifyContent: { xs: "center", md: "flex-end" },
+            alignItems: "center",
+            my: 0.5,
+          }}
         >
           {right.map((Component, key) => (
             <Grid key={key}>

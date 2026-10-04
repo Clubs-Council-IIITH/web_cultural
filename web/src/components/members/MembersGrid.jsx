@@ -44,7 +44,7 @@ export default async function MembersGrid({ clubid, onlyCurrent = false }) {
               </Typography>
             </Divider>
           ) : null}
-          <Grid container spacing={2} mb={3}>
+          <Grid container spacing={2} sx={{ mb: 3 }}>
             {targetMembers[year]?.map((member) => (
               <Grid key={member.uid} size={{ xs: 12, sm: 6, md: 4, lg: 2.4 }}>
                 <MemberCard

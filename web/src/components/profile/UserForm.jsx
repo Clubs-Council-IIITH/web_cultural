@@ -25,7 +25,12 @@ export default function UserForm({ defaultValues = {}, action = "log" }) {
   const [loading, setLoading] = useState(false);
   const [cancelDialog, setCancelDialog] = useState(false);
 
-  const { control, handleSubmit } = useForm({ defaultValues });
+  const { control, handleSubmit } = useForm({
+    defaultValues: {
+      ...defaultValues,
+      phone: defaultValues?.phone ?? "",
+    },
+  });
   const { triggerToast } = useToast();
 
   // different form submission handlers
@@ -86,7 +91,7 @@ export default function UserForm({ defaultValues = {}, action = "log" }) {
           container
           size={{ xs: 12, md: 7, xl: 8 }}
           spacing={3}
-          alignItems="flex-start"
+          sx={{ alignItems: "flex-start" }}
         >
           <Grid size={12}>
             <Grid container spacing={2} sx={{ mt: 1 }}>
@@ -168,6 +173,7 @@ export default function UserForm({ defaultValues = {}, action = "log" }) {
                   render={({ field, fieldState: { error, invalid } }) => (
                     <TextField
                       {...field}
+                      value={field.value ?? ""}
                       error={invalid}
                       helperText={error?.message}
                       label="Phone Number"
@@ -181,7 +187,7 @@ export default function UserForm({ defaultValues = {}, action = "log" }) {
           </Grid>
         </Grid>
 
-        <Grid container size={{ xs: 12, md: 5, xl: 4 }} spacing={3} alignItems="flex-start">
+        <Grid container size={{ xs: 12, md: 5, xl: 4 }} spacing={3} sx={{ alignItems: "flex-start" }}>
           <Grid size={12}>
             <Typography
               variant="subtitle2"

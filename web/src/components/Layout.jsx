@@ -165,7 +165,7 @@ function Drawer({ drawerOpen, onCloseDrawer }) {
             backgroundColor: theme.palette.background.opposite,
           }}
         >
-          <Box display="flex" justifyContent="space-between">
+          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Logo isDesktop={false} />
             {/* <Stack
               direction="row"
@@ -270,7 +270,7 @@ export function Content({ children, ...props }) {
             },
           }}
         >
-          <Box px={isDesktop ? 4 : 2}>
+          <Box sx={{ px: { xs: 2, lg: 4 } }}>
             {children}
             <Footer club={props.club} />
           </Box>
