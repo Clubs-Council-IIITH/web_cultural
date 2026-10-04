@@ -47,6 +47,7 @@ export default function ClubBanner({
       <Image
         alt={name}
         src={img}
+        priority
         width={width + 300}
         height={height + 300}
         style={{

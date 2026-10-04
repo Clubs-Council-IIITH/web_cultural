@@ -72,8 +72,10 @@ export default function DrawerItem({ title, path, icon }) {
         primary={
           <Box
             display="flex"
-            alignItems="center"
-            justifyContent="space-between"
+            sx={{
+              alignItems: 'center',
+              justifyContent:"space-between"
+            }}
           >
             {title}
             {externalLink && <Icon variant="link" />}

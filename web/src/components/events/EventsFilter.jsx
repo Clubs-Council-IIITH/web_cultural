@@ -51,11 +51,11 @@ export default function EventsFilter({ name, state }) {
   return (
     <Container>
       <Grid container spacing={2}>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Stack
             component="form"
             direction={isDesktop ? "row" : "column"}
-            flexWrap="wrap"
+            sx={{ flexWrap: "wrap" }}
             spacing={1}
             onSubmit={(e) => {
               e.preventDefault();
@@ -72,12 +72,14 @@ export default function EventsFilter({ name, state }) {
                 fullWidth
                 onChange={(e) => setTargetName(e.target.value)}
                 value={targetName}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <Icon variant="search" />
-                    </InputAdornment>
-                  ),
+                slotProps={{
+                  input: {
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Icon variant="search" />
+                      </InputAdornment>
+                    ),
+                  },
                 }}
               />
             </Grid>
@@ -89,7 +91,7 @@ export default function EventsFilter({ name, state }) {
               Search
             </Button>
 
-            <Grid item xs lg>
+            <Grid size={{ xs: 12, lg: "grow" }}>
               <ToggleButtonGroup
                 fullWidth
                 value={state}

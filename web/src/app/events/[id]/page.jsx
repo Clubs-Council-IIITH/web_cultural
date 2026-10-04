@@ -4,7 +4,7 @@ import { GET_EVENT } from "gql/queries/events";
 import EventDetails from "components/events/EventDetails";
 
 export async function generateMetadata({ params }, parent) {
-  const { id } = params;
+  const { id } = await params;
 
   const { data: { event } = {} } = await getClient().query(GET_EVENT, {
     eventid: id,
@@ -16,7 +16,7 @@ export async function generateMetadata({ params }, parent) {
 }
 
 export default async function Event({ params }) {
-  const { id } = params;
+  const { id } = await params;
 
   const { data: { event } = {} } = await getClient().query(GET_EVENT, {
     eventid: id,

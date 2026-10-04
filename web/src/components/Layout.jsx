@@ -19,7 +19,6 @@ import Icon from "components/Icon";
 import AccountPopover from "components/profile/AccountPopover";
 import DrawerItem from "components/DrawerItem";
 import Logo from "components/Logo";
-import ScrollbarWrapper from "components/ScrollbarWrapper";
 import Footer from "components/Footer";
 
 // define top bar width
@@ -73,7 +72,7 @@ function Bar({ onOpenDrawer }) {
         <Box sx={{ flexGrow: 1 }} />
         <Stack
           direction="row"
-          alignItems="center"
+          sx={{alignItems: 'center'}}
           spacing={{
             xs: 0.5,
             sm: 1,
@@ -148,7 +147,7 @@ function Drawer({ drawerOpen, onCloseDrawer }) {
           {publicItems}
           <Stack
             direction="row"
-            alignItems="center"
+            sx={{ alignItems: "center" }}
             spacing={{
               xs: 0.5,
               sm: 1,
@@ -197,12 +196,14 @@ function Drawer({ drawerOpen, onCloseDrawer }) {
         <MUIDrawer
           open
           variant="permanent"
-          PaperProps={{
-            sx: {
-              width: "100vw",
-              height: "max-content",
-              bgcolor: "background.opposite",
-              // borderBottomStyle: "dashed",
+          slotProps={{
+            paper: {
+              sx: {
+                width: "100vw",
+                height: "max-content",
+                bgcolor: "background.opposite",
+                // borderBottomStyle: "dashed",
+              },
             },
           }}
         >
@@ -212,15 +213,17 @@ function Drawer({ drawerOpen, onCloseDrawer }) {
         <MUIDrawer
           open={drawerOpen}
           onClose={onCloseDrawer}
-          ModalProps={{
-            keepMounted: true,
-          }}
-          PaperProps={{
-            sx: {
-              width: DRAWER_WIDTH,
-              display: "flex",
-              flexDirection: "column",
-              bgcolor: "background.opposite",
+          slotProps={{
+            backdrop: {
+              keepMounted: true,
+            },
+            paper: {
+              sx: {
+                width: DRAWER_WIDTH,
+                display: "flex",
+                flexDirection: "column",
+                bgcolor: "background.opposite",
+              },
             },
           }}
         >
@@ -249,7 +252,6 @@ export function Content({ children, ...props }) {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   return (
-    <ScrollbarWrapper>
       <Box
         sx={{
           display: "flex",
@@ -259,14 +261,12 @@ export function Content({ children, ...props }) {
         <Box
           component="main"
           sx={{
-            overflow: "auto",
             width: "100%",
             marginTop: `${isDesktop ? BAR_HEIGHT_DESKTOP + 20 : BAR_HEIGHT_MOBILE + 15}px`,
             paddingTop: `${isDesktop ? theme.spacing(5) : 0}`,
             paddingBottom: theme.spacing(5),
             [theme.breakpoints.up("md")]: {
-              marginTop: `${DRAWER_HEIGHT}px`,
-              paddingRight: theme.spacing(2),
+              marginTop: `${DRAWER_HEIGHT}px`
             },
           }}
         >
@@ -276,6 +276,5 @@ export function Content({ children, ...props }) {
           </Box>
         </Box>
       </Box>
-    </ScrollbarWrapper>
   );
 }

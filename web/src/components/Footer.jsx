@@ -44,19 +44,12 @@ export default function Footer({ club = {} }) {
       <Divider sx={{ py: 4 }} />
       <Grid
         container
-        pt={5}
-        pb={3}
         spacing={2}
-        display={"flex"}
-        flexDirection={"column"}
+        sx={{ pt: 5, pb: 3, display: "flex", flexDirection: "column" }}
       >
         <Grid
-          item
-          xs={12}
-          lg
-          display="flex"
-          alignItems="center"
-          justifyContent={"center"}
+          size={{ xs: 12, lg: "grow" }}
+          sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
         >
           <Box mr={3}>
             <Image
@@ -78,12 +71,8 @@ export default function Footer({ club = {} }) {
           </Box>
         </Grid>
         <Grid
-          item
-          xs={12}
-          lg
-          display="flex"
-          alignItems="center"
-          justifyContent={"center"}
+          size={{ xs: 12, lg: "grow" }}
+          sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
         >
           <IconButton
             component="a"
@@ -136,12 +125,8 @@ export default function Footer({ club = {} }) {
           </IconButton> */}
         </Grid>
         <Grid
-          item
-          xs={12}
-          lg
-          display="flex"
-          alignItems="center"
-          justifyContent={"center"}
+          size={{ xs: 12, lg: "grow" }}
+          sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
         >
           <Typography
             variant="body2"

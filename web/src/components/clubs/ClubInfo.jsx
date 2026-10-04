@@ -19,8 +19,7 @@ export default function ClubInfo({
     <>
       <Box
         display="flex"
-        alignItems="center"
-        justifyContent="center"
+        sx={{alignItems:'center', justifyContent: 'center'}}
         mt={3}
         mb={2}
       >

@@ -16,35 +16,31 @@ export default function ActionPalette({
         spacing={2}
       >
         <Grid
-          item
           container
-          xs={12}
-          md={6}
+          size={{ xs: 12, md: 6 }}
           spacing={1}
           justifyContent={{ xs: "center", md: "flex-start" }}
           alignItems="center"
           my={0.5}
         >
           {left.map((Component, key) => (
-            <Grid item xs="auto">
-              <Component {...leftProps[key]} key={key} />
+            <Grid size="auto" key={key}>
+              <Component {...leftProps[key]} />
             </Grid>
           ))}
         </Grid>
 
         <Grid
-          item
           container
-          xs={12}
-          md={6}
+          size={{ xs: 12, md: 6 }}
           spacing={1}
           justifyContent={{ xs: "center", md: "flex-end" }}
           alignItems="center"
           my={0.5}
         >
           {right.map((Component, key) => (
-            <Grid item>
-              <Component {...rightProps[key]} key={key} />
+            <Grid key={key}>
+              <Component {...rightProps[key]} />
             </Grid>
           ))}
         </Grid>

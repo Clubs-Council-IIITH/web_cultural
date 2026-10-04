@@ -8,7 +8,6 @@ import { useForm, Controller } from "react-hook-form";
 
 import { useToast } from "components/Toast";
 
-import { LoadingButton } from "@mui/lab";
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import {
   isValidPhoneNumber,
@@ -85,69 +84,66 @@ export default function UserForm({ defaultValues = {}, action = "log" }) {
       <Grid container spacing={4}>
         <Grid
           container
-          item
-          xs={12}
-          md={7}
-          xl={8}
+          size={{ xs: 12, md: 7, xl: 8 }}
           spacing={3}
           alignItems="flex-start"
         >
-          <Grid container item>
-            <Grid container item spacing={2} mt={1}>
-              <Grid item xs={6}>
+          <Grid size={12}>
+            <Grid container spacing={2} sx={{ mt: 1 }}>
+              <Grid size={6}>
                 <TextField
                   fullWidth
                   disabled
                   label="First Name"
-                  value={defaultValues?.firstName}
+                  value={defaultValues?.firstName || ""}
                 />
               </Grid>
-              <Grid item xs={6}>
+              <Grid size={6}>
                 <TextField
                   fullWidth
                   disabled
                   label="Last Name"
-                  value={defaultValues?.lastName}
+                  value={defaultValues?.lastName || ""}
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <TextField
                   fullWidth
                   disabled
                   label="Email"
-                  value={defaultValues?.email}
+                  value={defaultValues?.email || ""}
                 />
               </Grid>
-              <Grid container item xs={12} spacing={1}>
-                <Grid item>
+              <Grid container size={12} spacing={1}>
+                <Grid size={{ xs: "grow" }}>
                   <TextField
                     disabled
                     label="Batch"
-                    value={defaultValues?.batch?.toUpperCase()}
+                    value={defaultValues?.batch?.toUpperCase() || ""}
                   />
                 </Grid>
-                <Grid item>
+                <Grid size={{ xs: "grow" }}>
                   <TextField
                     disabled
                     label="Stream"
-                    value={defaultValues?.stream?.toUpperCase()}
+                    value={defaultValues?.stream?.toUpperCase() || ""}
                   />
                 </Grid>
               </Grid>
             </Grid>
           </Grid>
-          <Grid container item>
+          <Grid size={12}>
             <Typography
               variant="subtitle2"
-              textTransform="uppercase"
+              sx={{ textTransform: "uppercase" }}
               color="text.secondary"
               gutterBottom
               mb={defaultValues?.phone ? 2 : 1}
             >
               Details
             </Typography>
-            <Grid container item spacing={2}>
-              <Grid item xs={12}>
+            <Grid container spacing={2}>
+              <Grid size={12}>
                 <Controller
                   name="phone"
                   control={control}
@@ -185,18 +181,18 @@ export default function UserForm({ defaultValues = {}, action = "log" }) {
           </Grid>
         </Grid>
 
-        <Grid container item xs md spacing={3} alignItems="flex-start">
-          <Grid container item>
+        <Grid container size={{ xs: 12, md: 5, xl: 4 }} spacing={3} alignItems="flex-start">
+          <Grid size={12}>
             <Typography
               variant="subtitle2"
-              textTransform="uppercase"
+              sx={{ textTransform: "uppercase" }}
               color="text.secondary"
               gutterBottom
             >
               Media
             </Typography>
-            <Grid container item spacing={2}>
-              <Grid item xs={12}>
+            <Grid container spacing={2}>
+              <Grid size={12}>
                 <FileUpload
                   type="image"
                   name="img"
@@ -207,8 +203,8 @@ export default function UserForm({ defaultValues = {}, action = "log" }) {
               </Grid>
             </Grid>
 
-            <Grid container item direction="row" xs={12} spacing={1} pt={3}>
-              <Grid item xs={6}>
+            <Grid container direction="row" size={12} spacing={1} sx={{ pt: 3 }}>
+              <Grid size={6}>
                 <Button
                   size="large"
                   variant="outlined"
@@ -230,8 +226,8 @@ export default function UserForm({ defaultValues = {}, action = "log" }) {
                   confirmText="Yes, discard my changes"
                 />
               </Grid>
-              <Grid item xs={6}>
-                <LoadingButton
+              <Grid size={6}>
+                <Button
                   loading={loading}
                   type="submit"
                   size="large"
@@ -240,7 +236,7 @@ export default function UserForm({ defaultValues = {}, action = "log" }) {
                   fullWidth
                 >
                   Save
-                </LoadingButton>
+                </Button>
               </Grid>
             </Grid>
           </Grid>

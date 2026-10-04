@@ -9,15 +9,19 @@ const makeClient = () => {
   return createClient({
     url: GRAPHQL_ENDPOINT,
     exchanges: [cacheExchange, fetchExchange],
-    fetchOptions: {
-      cache: "no-store",
-      credentials: "include",
-      headers: {
-        cookie: cookies()
-          .getAll()
-          .map((cookie) => `${cookie.name}=${cookie.value}`)
-          .join("; "),
-      },
+    preferGetMethod: false,
+    fetchOptions: async () => {
+      const cookieStore= await cookies();
+      return {
+        cache: "no-store",
+        credentials: "include",
+        headers: {
+          cookie: cookieStore
+            .getAll()
+            .map((cookie) => `${cookie.name}=${cookie.value}`)
+            .join("; "),
+        },
+      }
     },
   });
 };
