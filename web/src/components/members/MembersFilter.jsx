@@ -65,7 +65,7 @@ export default function MembersFilter({ name, club, state, cc = false }) {
     <Container>
       <Grid container spacing={2}>
         {cc && (
-          <Grid item xs={12} lg={8}>
+          <Grid size={{ xs: 12, lg: 8 }}>
             <FormControl fullWidth>
               <InputLabel id="clubid">Filter by club</InputLabel>
               <Select
@@ -91,7 +91,7 @@ export default function MembersFilter({ name, club, state, cc = false }) {
             </FormControl>
           </Grid>
         )}
-        <Grid item xs lg>
+        <Grid size={{ xs: 12, lg: "grow" }}>
           <ToggleButtonGroup
             fullWidth
             value={state}

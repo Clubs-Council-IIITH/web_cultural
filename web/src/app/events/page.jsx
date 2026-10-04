@@ -10,16 +10,17 @@ export const metadata = {
 };
 
 export default async function Events({ searchParams }) {
-  const targetName = searchParams?.name;
+  const resolvedParams = await searchParams;
+  const targetName = resolvedParams?.name;
   const targetClub = CLUB_ID;
   const targetState = [
-    ...(searchParams?.upcoming === "true" ? ["upcoming"] : []),
-    ...(searchParams?.completed === "true" ? ["completed"] : []),
+    ...(resolvedParams?.upcoming === "true" ? ["upcoming"] : []),
+    ...(resolvedParams?.completed === "true" ? ["completed"] : []),
   ];
 
   return (
     <Box>
-      <Box mt={2}>
+      <Box sx={{ mt: 2 }}>
         <EventsFilter name={targetName} state={targetState} />
       </Box>
 

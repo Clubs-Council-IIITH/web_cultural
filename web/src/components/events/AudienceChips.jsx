@@ -8,7 +8,7 @@ export default function AudienceChips({ audience }) {
       {audienceLabels(audience)
         ?.sort((a, b) => a.name.localeCompare(b.name))
         ?.map(({ name, color }) => (
-          <Grid item key={name}>
+          <Grid key={name}>
             <Chip
               label={name}
               sx={{

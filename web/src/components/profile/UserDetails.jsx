@@ -11,12 +11,12 @@ export default async function UserDetails({ user }) {
   const currentUser = { ...currentUserMeta, ...currentUserProfile };
 
   return (
-    <Stack direction="column" spacing={3} mx={2}>
+    <Stack direction="column" spacing={3} sx={{ mx: 2 }}>
       <Box>
-        <Typography variant="subtitle2" textTransform="uppercase" gutterBottom>
+        <Typography variant="subtitle2" sx={{ textTransform: "uppercase" }} gutterBottom>
           User ID
         </Typography>
-        <Typography fontWeight={400} fontFamily="monospace">
+        <Typography sx={{ fontWeight: 400, fontFamily: "monospace" }}>
           {user.uid}
         </Typography>
       </Box>
@@ -27,12 +27,12 @@ export default async function UserDetails({ user }) {
             <Box>
               <Typography
                 variant="subtitle2"
-                textTransform="uppercase"
+                sx={{ textTransform: "uppercase" }}
                 gutterBottom
               >
                 Batch
               </Typography>
-              <Typography fontWeight={400} textTransform="uppercase">
+              <Typography fontWeight={400} sx={{ textTransform: "uppercase" }}>
                 {user.batch} · {user.stream}
               </Typography>
             </Box>
@@ -45,7 +45,7 @@ export default async function UserDetails({ user }) {
                 <Box>
                   <Typography
                     variant="subtitle2"
-                    textTransform="uppercase"
+                    sx={{ textTransform: "uppercase" }}
                     gutterBottom
                   >
                     Roll Number
@@ -58,7 +58,7 @@ export default async function UserDetails({ user }) {
               <Box>
                 <Typography
                   variant="subtitle2"
-                  textTransform="uppercase"
+                  sx={{ textTransform: "uppercase" }}
                   gutterBottom
                 >
                   Phone Number

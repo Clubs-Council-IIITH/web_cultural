@@ -25,11 +25,13 @@ export default async function MemberCard({ uid, poc, roles }) {
       raised={false}
       sx={{ backgroundColor: "inherit", border: "none", boxShadow: 0 }}
     >
-      <CardActionArea
-        // disabled // TODO: Link to public user profile
-        component={Link}
+      <Link
         href={`/profile/${uid}`}
-        sx={{
+        style={{ textDecoration: "none", color: "inherit", display: "block" }}
+      >
+        <CardActionArea
+          // disabled // TODO: Link to public user profile
+          sx={{
           p: 2,
           width: "100%",
           display: "flex",
@@ -47,16 +49,15 @@ export default async function MemberCard({ uid, poc, roles }) {
           height={150}
         />
         <Typography
-          textAlign="center"
+          align="center"
           variant="subtitle1"
-          textTransform="capitalize"
-          mt={3}
+          sx={{ textTransform: "capitalize", mt: 3 }}
         >
           {`${user.firstName} ${user.lastName}`.toLowerCase()}
         </Typography>
 
         {poc ? (
-          <Box display="flex" alignItems="center" mt={1}>
+          <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
             <Icon
               variant="contact-emergency-rounded"
               color="error.main"
@@ -69,7 +70,7 @@ export default async function MemberCard({ uid, poc, roles }) {
         ) : null}
 
         {roles?.map((role, key) => (
-          <Box key={key} mt={0.5} textAlign="center">
+          <Box key={key} sx={{ mt: 0.5, textAlign: "center" }}>
             <Typography
               variant="body2"
               sx={{ display: "inline-block", color: "text.secondary" }}
@@ -88,7 +89,8 @@ export default async function MemberCard({ uid, poc, roles }) {
             </Typography>
           </Box>
         ))}
-      </CardActionArea>
+        </CardActionArea>
+      </Link>
     </Card>
   );
 }

@@ -12,7 +12,7 @@ export const metadata = {
 };
 
 export default async function EditProfile({ params }) {
-  const { id } = params;
+  const { id } = await  params;
 
   // get target user
   const { data: { userProfile, userMeta } = {} } = await getClient().query(

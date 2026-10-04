@@ -12,6 +12,7 @@ import {
   Divider,
   Typography,
   Stack,
+  MenuList,
   MenuItem,
   Avatar,
   IconButton,
@@ -118,86 +119,90 @@ export default function AccountPopover() {
         onClose={handleClose}
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
         transformOrigin={{ vertical: "top", horizontal: "right" }}
-        PaperProps={{
-          sx: {
-            p: 0,
-            mt: 1.5,
-            ml: 0.75,
-            width: 180,
-            "& .MuiMenuItem-root": {
-              typography: "body2",
-              borderRadius: 0.75,
+        slotProps={{
+          paper: {
+            sx: {
+              p: 0,
+              mt: 1.5,
+              ml: 0.75,
+              width: 180,
+              "& .MuiMenuItem-root": {
+                typography: "body2",
+                borderRadius: 0.75,
+              },
             },
           },
         }}
       >
-        {isAuthenticated ? (
-          // if authenticated, show user details and options
-          <>
-            <Box sx={{ my: 1.5, px: 2.5 }}>
-              <Typography variant="subtitle2" noWrap>
-                {`${user?.firstName} ${user?.lastName}`}
-              </Typography>
-              <Typography
-                variant="body2"
-                sx={{ color: "text.secondary" }}
-                noWrap
-              >
-                {user?.email}
-              </Typography>
-            </Box>
+        <MenuList>
+          {isAuthenticated ? (
+            // if authenticated, show user details and options
+            <>
+              <Box sx={{ my: 1.5, px: 2.5 }}>
+                <Typography variant="subtitle2" noWrap>
+                  {`${user?.firstName} ${user?.lastName}`}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "text.secondary" }}
+                  noWrap
+                >
+                  {user?.email}
+                </Typography>
+              </Box>
 
-            {[...AUTHENTICATED_MENU_OPTIONS, ...COMMON_MENU_OPTIONS].length >
-            0 ? (
-              <>
-                <Divider sx={{ borderStyle: "dashed" }} />
+              {[...AUTHENTICATED_MENU_OPTIONS, ...COMMON_MENU_OPTIONS].length >
+              0 ? (
+                <>
+                  <Divider sx={{ borderStyle: "dashed" }} />
 
-                <Stack sx={{ p: 1 }}>
-                  {[...AUTHENTICATED_MENU_OPTIONS, ...COMMON_MENU_OPTIONS].map(
-                    (option) => (
-                      <MenuItem
-                        component={Link}
-                        key={option.label}
-                        href={option.url}
-                      >
+                  <Stack sx={{ p: 1 }}>
+                    {[...AUTHENTICATED_MENU_OPTIONS, ...COMMON_MENU_OPTIONS].map(
+                      (option) => (
+                        <MenuItem
+                          component={Link}
+                          key={option.label}
+                          href={option.url}
+                        >
+                          <Icon variant={option.icon} sx={{ mr: 2 }} />
+                          {option.label}
+                        </MenuItem>
+                      ),
+                    )}
+                  </Stack>
+                </>
+              ) : null}
+
+              <Divider sx={{ borderStyle: "dashed" }} />
+
+              <MenuItem onClick={() => logout(pathname)} sx={{ m: 1 }}>
+                Logout
+              </MenuItem>
+            </>
+          ) : (
+            // else show login button
+            <>
+              {COMMON_MENU_OPTIONS.length > 0 ? (
+                <>
+                  <Stack sx={{ p: 1 }}>
+                    {COMMON_MENU_OPTIONS.map((option) => (
+                      <MenuItem component={Link} key={option.label} href={url}>
                         <Icon variant={option.icon} sx={{ mr: 2 }} />
                         {option.label}
                       </MenuItem>
-                    ),
-                  )}
-                </Stack>
-              </>
-            ) : null}
+                    ))}
+                  </Stack>
 
-            <Divider sx={{ borderStyle: "dashed" }} />
+                  <Divider sx={{ borderStyle: "dashed" }} />
+                </>
+              ) : null}
 
-            <MenuItem onClick={() => logout(pathname)} sx={{ m: 1 }}>
-              Logout
-            </MenuItem>
-          </>
-        ) : (
-          // else show login button
-          <>
-            {COMMON_MENU_OPTIONS.length > 0 ? (
-              <>
-                <Stack sx={{ p: 1 }}>
-                  {COMMON_MENU_OPTIONS.map((option) => (
-                    <MenuItem component={Link} key={option.label} href={url}>
-                      <Icon variant={option.icon} sx={{ mr: 2 }} />
-                      {option.label}
-                    </MenuItem>
-                  ))}
-                </Stack>
-
-                <Divider sx={{ borderStyle: "dashed" }} />
-              </>
-            ) : null}
-
-            <MenuItem onClick={() => login(pathname)} sx={{ m: 1 }}>
-              Login
-            </MenuItem>
-          </>
-        )}
+              <MenuItem onClick={() => login(pathname)} sx={{ m: 1 }}>
+                Login
+              </MenuItem>
+            </>
+          )}
+        </MenuList>
       </Popover>
     </>
   );
